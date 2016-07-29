@@ -1,5 +1,6 @@
 defmodule Rumbl.Auth do
   import Plug.Conn
+  import Phoenix.Controller
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
   alias Rumbl.Router.Helpers
 
@@ -8,8 +9,8 @@ defmodule Rumbl.Auth do
       conn
     else
       conn
-      |> Helpers.put_flash(:error, "You must loggin first!")
-      |> Helpers.redirect(to: Helpers.page_path(conn, :index))
+      |> put_flash(:error, "You must loggin first!")
+      |> redirect(to: Helpers.page_path(conn, :index))
       |> halt()
     end
   end
