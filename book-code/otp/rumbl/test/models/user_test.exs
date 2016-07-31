@@ -7,10 +7,10 @@
 # Visit http://www.pragmaticprogrammer.com/titles/phoenix for more book information.
 #---
 defmodule Rumbl.UserTest do
-  use Rumbl.ModelCase
+  use Rumbl.ModelCase, async: true
   alias Rumbl.User
 
-  @valid_attrs %{name: "A User", username: "eva"}
+  @valid_attrs %{name: "A User", username: "eva", password: "secret"}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do
