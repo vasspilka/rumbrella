@@ -4,7 +4,7 @@ defmodule Rumbl.UserController do
 
   plug :authenticate_user when action in [:index, :show]
 
-  def index(conn, params) do
+  def index(conn, _params) do
     render conn, "index.html", users: Repo.all(User)
   end
 
@@ -29,5 +29,4 @@ defmodule Rumbl.UserController do
         render(conn, "new.html", changeset: changeset)
     end
   end
-
 end

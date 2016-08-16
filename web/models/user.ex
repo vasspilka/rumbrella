@@ -3,7 +3,7 @@ defmodule Rumbl.User do
 
   schema "users" do
     field :name,     :string
-    field :username, :string 
+    field :username, :string
     field :password, :string, virtual: true
     field :password_hash, :string
     has_many :videos, Rumbl.Video
@@ -30,7 +30,7 @@ defmodule Rumbl.User do
   defp put_pass_hash(changeset) do
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
-        put_change(changeset, :password_hash, Comeonin.Bcrypt.hashpwsalt(pass)) 
+        put_change(changeset, :password_hash, Comeonin.Bcrypt.hashpwsalt(pass))
       _ ->
         changeset
     end
