@@ -47,6 +47,9 @@ defmodule InfoSys do
     receive do
       {:results, ^query_ref, results} ->
         Process.demonitor(monitor_ref, [:flush])
+        # take the results you just got and add to it the acc.
+        # which means add the current results to the results we had from all the other
+        # children.
         await_result(tail, results ++ acc, timeout)
       {:DOWN, ^monitor_ref, :process, ^pid, _reason} ->
         await_result(tail, acc, timeout)
